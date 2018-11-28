@@ -80,7 +80,7 @@ There are four parties involved in the payment process for making a payment:
 10. Kios ON
 11. Akulaku
 
-##Detailed Explanation
+## Detailed Explanation
 - Checkout Object
 - Charge Method
 - Response
