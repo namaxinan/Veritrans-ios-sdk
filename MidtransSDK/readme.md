@@ -1,24 +1,78 @@
-### Overview
+## Overview
 Midtarns iOS SDK makes it easy to build an excellent payment experience in your iOS app. It provides powerful, customizable to collect your users' payment details.
 
 We also expose the low-level APIs that power those elements to make it easy to build fully custom forms. This guide will take you all the way from integrating our SDK to accepting payments from your users via our payment method that we provide
 
-### Prerequsites
+## Supported Payments
+1. Credit Card
+2. VA / Bank Transfer
+3. CIMB Clicks
+4. Indomaret
+5. BCA KlikPay
+6. Klikbca
+7. Mandiri E-Cash
+8. Mandiri Clickpay
+9. BRI E-Pay
+10. GO-PAY
+11. Akulaku
+
+## Prerequsites
+
+There are four parties involved in the payment process for making a payment:
+
+ -  Merchant Server: The merchant backend implementation
+ -  Merchant Host app
+ -  Midtrans Mobile SDK
+ -  Midtrans Backend
+
+ **And there are some step you must do before using Midtrans SDK :**
+
+ - Create a merchant account in MAP.
+ - Implementing Merchant Server. 
+ - Setup your merchant accounts settings, in particular Notification URL.
+ 
+**Midtrans SDK General Transaction Flow :**
+
+
+ **1. Initialize**
+> 
+> Before all payment flow started, Host-app need to intialize SDK from library, set credentials and configure all need for checkout.
+> 
+> 
+
+**1. Checkout**
+
+> 
+> Host-app making request object before calling checkout method from Midtrans SDK. If success it will return SnapToken as main token for all transaction method in Midtrans SDK.
+> 
+
+ **2. Payment Info**
+> 
+> After do checkout, Host-app can get the detail of SnapToken information by calling payment info method from Midtrans SDK. It will return all of detail for making payment like enbale payment method, etc.
+
+ **3. Charging**
+>
+> Host-app can pass begin payment with calling start payment method and pass needed parameter, it will return object based on payment method. Some payment method will return your transaction number for making payment, the other return url link for completion payment and you must to open the url for finish it.
+> 
+
+## Quick Start
 
 - Create a merchant account in MAP
 - Setup your merchant accounts settings, in particular Notification URL.
 - [Install and configure the SDK](#install-and-configure-sdk)
 - [Integration](#sdk-integration)
 - [Checkout](#sdk-checkout)
- * [Standard](#sdk-checkout-standard)
- * [Custom with Options](#sdk-checkout-custom)
- 		+ [Customer info](#sdk-checkout-custom-customer-info)
+  * [Standard](#sdk-checkout-standard)
+  * [Custom with Options](#sdk-checkout-custom)
+  		+ [Customer info](#sdk-checkout-custom-customer-info)
 		+ [Items info](#sdk-checkout-custom-items-info)
    		+ [Credit card options](#sdk-checkout-custom-items-cc-options)
    		+ [Gopay options](#sdk-checkout-custom-items-gopay-options)
    		+ Custom expired
    		+ Custom fields
+   		
  * Get payment info
+ 
  * Charge
  		+ Credit Card
 		+ VA / Bank Transfer
