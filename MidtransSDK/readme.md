@@ -7,15 +7,15 @@ We also expose the low-level APIs that power those elements to make it easy to b
 
 1. Create a merchant account in MAP
 2. Setup your merchant accounts settings, in particular Notification URL.
-3. [Install and configure the SDK] (#install-and-configure-sdk)
-4. [Integration] (#sdk-integration)
-5. [Checkout] (#sdk-checkout)
- * [Standard] (#sdk-checkout-standard)
- * [Custom with Options] (#sdk-checkout-custom)
+3. [Install and configure the SDK](#install-and-configure-sdk)
+4. [Integration](#sdk-integration)
+5. [Checkout](#sdk-checkout)
+ * [Standard](#sdk-checkout-standard)
+ * [Custom with Options](#sdk-checkout-custom)
  		- [Customer info](#sdk-checkout-custom-customer-info)
 		- [Items info](#sdk-checkout-custom-items-info)
-   		- [Credit card options] (#sdk-checkout-custom-items-cc-options)
-   		- [Gopay options] (#sdk-checkout-custom-items-gopay-options)
+   		- [Credit card options](#sdk-checkout-custom-items-cc-options)
+   		- [Gopay options](#sdk-checkout-custom-items-gopay-options)
    		- Custom expired
    		- Custom fields
  * Get payment info
@@ -47,7 +47,7 @@ We also expose the low-level APIs that power those elements to make it easy to b
 11. Akulaku
 
 
-#### <a id="install-and-configure-sdk"></a> Install and configure the SDK
+###Install and configure the SDK <a id="install-and-configure-sdk"></a> ###
 You can choose to install the Midtrans iOS SDK via your favorite method. We support CocoaPods and manual installation with both static and dynamic frameworks.
 
 1. If you haven't already, install the latest version of [Cococapods](https://cocoapods.org/).
@@ -136,7 +136,7 @@ Then you can put it all together to generate the checkout token with this simple
   NSString *orderID = @"Some unique order id"
   MIDCheckoutTransaction *trx = [[MIDCheckoutTransaction alloc] initWithOrderID:orderID grossAmount:@1000];
     
-  [[MIDClient shared] checkoutWith:trx options:@[gopay] completion:^(MIDToken * _Nullable token, NSError * _Nullable error) {
+  [[MIDClient shared] checkoutWithTransaction:trx options:@[gopay] completion:^(MIDToken * _Nullable token, NSError * _Nullable error) {
         NSLog(@"Token: %@", token.dictionaryValue);
         [self fetchPaymentInfo:token.token];
     }];
