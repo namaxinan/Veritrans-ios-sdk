@@ -5,11 +5,11 @@ We also expose the low-level APIs that power those elements to make it easy to b
 
 ### Prerequsites
 
-1. Create a merchant account in MAP
-2. Setup your merchant accounts settings, in particular Notification URL.
-3. [Install and configure the SDK](#install-and-configure-sdk)
-4. [Integration](#sdk-integration)
-5. [Checkout](#sdk-checkout)
+- Create a merchant account in MAP
+- Setup your merchant accounts settings, in particular Notification URL.
+- [Install and configure the SDK](#install-and-configure-sdk)
+- [Integration](#sdk-integration)
+- [Checkout](#sdk-checkout)
  * [Standard](#sdk-checkout-standard)
  * [Custom with Options](#sdk-checkout-custom)
  		+ [Customer info](#sdk-checkout-custom-customer-info)
