@@ -63,28 +63,9 @@ There are four parties involved in the payment process for making a payment:
 - [Integration](#sdk-integration)
 - [Checkout](#sdk-checkout)
   * [Standard](#sdk-checkout-standard)
-  * [Custom with Options](#sdk-checkout-custom)
-  		+ [Customer info](#sdk-checkout-custom-customer-info)
-		+ [Items info](#sdk-checkout-custom-items-info)
-   		+ [Credit card options](#sdk-checkout-custom-items-cc-options)
-   		+ [Gopay options](#sdk-checkout-custom-items-gopay-options)
-   		+ Custom expired
-   		+ Custom fields
-   		
- * Get payment info
- 
- * Charge
- 		+ Credit Card
-		+ VA / Bank Transfer
-		+ CIMB Clicks
-		+ Indomaret
-		+ BCA KlikPay
-		+ Klikbca
-		+ Mandiri E-Cash
-		+ Mandiri Clickpay
-		+ BRI E-Pay
-		+ Akulaku
-
+  * [Custom with Options](#sdk-checkout-custom) 
+  * Get payment info
+  * Charge
 
 ### Supported Payments
 1. Credit Card
