@@ -12,25 +12,24 @@ We also expose the low-level APIs that power those elements to make it easy to b
 5. [Checkout](#sdk-checkout)
  * [Standard](#sdk-checkout-standard)
  * [Custom with Options](#sdk-checkout-custom)
- 		- [Customer info](#sdk-checkout-custom-customer-info)
-		- [Items info](#sdk-checkout-custom-items-info)
-   		- [Credit card options](#sdk-checkout-custom-items-cc-options)
-   		- [Gopay options](#sdk-checkout-custom-items-gopay-options)
-   		- Custom expired
-   		- Custom fields
+ 		+ [Customer info](#sdk-checkout-custom-customer-info)
+		+ [Items info](#sdk-checkout-custom-items-info)
+   		+ [Credit card options](#sdk-checkout-custom-items-cc-options)
+   		+ [Gopay options](#sdk-checkout-custom-items-gopay-options)
+   		+ Custom expired
+   		+ Custom fields
  * Get payment info
  * Charge
- 		- Credit Card
-		- VA / Bank Transfer
-		- CIMB Clicks
-		- Indomaret
-		- BCA KlikPay
-		- Klikbca
-		- Mandiri E-Cash
-		- Mandiri Clickpay
-		- BRI E-Pay
-		- Kios ON
-		- Akulaku
+ 		+ Credit Card
+		+ VA / Bank Transfer
+		+ CIMB Clicks
+		+ Indomaret
+		+ BCA KlikPay
+		+ Klikbca
+		+ Mandiri E-Cash
+		+ Mandiri Clickpay
+		+ BRI E-Pay
+		+ Akulaku
 
 
 ### Supported Payments
