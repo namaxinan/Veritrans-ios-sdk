@@ -67,7 +67,7 @@ There are four parties involved in the payment process for making a payment:
   * Get payment info
   * Charge
 
-### Supported Payments
+## Supported Payments
 1. Credit Card
 2. VA / Bank Transfer
 3. CIMB Clicks
@@ -80,6 +80,12 @@ There are four parties involved in the payment process for making a payment:
 10. Kios ON
 11. Akulaku
 
+##Detailed Explanation
+- Checkout Object
+- Charge Method
+- Response
+- Error Response
+- Method Documentation
 
 ###Install and configure the SDK <a id="install-and-configure-sdk"></a> ###
 You can choose to install the Midtrans iOS SDK via your favorite method. We support CocoaPods and manual installation with both static and dynamic frameworks.
