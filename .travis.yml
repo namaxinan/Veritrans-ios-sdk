@@ -11,6 +11,7 @@ before_install:
 
 script:
 #reset pods
+- cd MidtransDemo
 - rm -rf "~/Library/Caches/CocoaPods"
 - rm -rf "Pods/"
 - pod install
