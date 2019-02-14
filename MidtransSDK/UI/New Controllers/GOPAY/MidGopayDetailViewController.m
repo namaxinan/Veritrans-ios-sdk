@@ -11,6 +11,7 @@
 #import "MIDGopayDetailView.h"
 #import "MidtransDirectHeader.h"
 #import "MidtransUINextStepButton.h"
+#import "MIDVendorUI.h"
 #import "MIdtransUIBorderedView.h"
 #import "VTGuideCell.h"
 #import "VTClassHelper.h"
@@ -27,6 +28,16 @@
 
 @implementation MidGopayDetailViewController
 @dynamic view;
+
+- (MIDPaymentInfo *)info {
+    return [MIDVendorUI shared].info;
+}
+
+- (NSString *)orderID {
+    return self.info.transaction.orderID;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,

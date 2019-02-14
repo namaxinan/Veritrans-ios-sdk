@@ -1676,18 +1676,14 @@
 				E5AE702C2212A0A60064FE00 /* MidtransCommonTSCViewController.m */,
 				E5AE702A2212A0A50064FE00 /* SNPPostPaymentGeneralViewController.h */,
 				E5AE702E2212A0A70064FE00 /* SNPPostPaymentGeneralViewController.m */,
-				E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */,
 				E5AE6F8C2212A0810064FE00 /* MIDOtherVAViewController.h */,
 				E5AE6F762212A07E0064FE00 /* MIDOtherVAViewController.m */,
 				E5AE6F452212A0750064FE00 /* MIDPaymentIndomaretViewController.h */,
 				E5AE6F222212A06E0064FE00 /* MIDPaymentIndomaretViewController.m */,
-				E5AE6EDE2212A0610064FE00 /* MidGopayViewController.h */,
 				E5AE6F782212A07E0064FE00 /* MBXPageViewController_vt.h */,
 				E5AE6EF32212A0630064FE00 /* MBXPageViewController_vt.m */,
 				E5AE6FA52212A0860064FE00 /* MIDDanamonOnlineViewController.h */,
 				E5AE6EEB2212A0620064FE00 /* MIDDanamonOnlineViewController.m */,
-				E5AE6EE92212A0620064FE00 /* MidGopayDetailViewController.h */,
-				E5AE6F3B2212A0730064FE00 /* MidGopayDetailViewController.m */,
 				E5AE6F512212A0770064FE00 /* MidtransNewCreditCardViewController.h */,
 				E5AE6F532212A0780064FE00 /* MidtransNewCreditCardViewController.m */,
 				E5AE6EDD2212A0610064FE00 /* MidtransPaymentGCIViewController.h */,
@@ -1765,6 +1761,7 @@
 		E56FA9492212FA7C003DC10D /* New Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EC75847D221542FF0069A963 /* GOPAY */,
 				E56FA9442212B68A003DC10D /* MIDPaymentController.h */,
 				E56FA9452212B68A003DC10D /* MIDPaymentController.m */,
 				E56FA9462212B68A003DC10D /* MIDPaymentController.xib */,
@@ -2139,8 +2136,6 @@
 			children = (
 				E5AE70372212A0AA0064FE00 /* MIDBarcode39Generator.h */,
 				E5AE70312212A0A80064FE00 /* MIDBarcode39Generator.m */,
-				E5AE702D2212A0A70064FE00 /* MIDGopayDetailView.h */,
-				E5AE702B2212A0A60064FE00 /* MIDGopayDetailView.m */,
 				E5AE70342212A0A90064FE00 /* SNPMaintainView.h */,
 				E5AE70332212A0A90064FE00 /* SNPMaintainView.m */,
 				E5AE70302212A0A80064FE00 /* SNPPostPaymentGeneralHeader.h */,
@@ -2167,8 +2162,6 @@
 				E5AE6F882212A0810064FE00 /* HMSegmentedControl.m */,
 				E5AE6EFA2212A0640064FE00 /* IHKeyboardAvoiding_vt.h */,
 				E5AE6EF22212A0630064FE00 /* IHKeyboardAvoiding_vt.m */,
-				E5AE6EEE2212A0630064FE00 /* MIDGopayView.h */,
-				E5AE6F0E2212A0690064FE00 /* MIDGopayView.m */,
 				E5AE6EDB2212A0610064FE00 /* MidtransLineView.h */,
 				E5AE6F442212A0750064FE00 /* MidtransLineView.m */,
 				E5AE6FAF2212A0880064FE00 /* MidtransLoadingIndicator.h */,
@@ -2320,7 +2313,6 @@
 				E56FA9402212A5F0003DC10D /* SNPPostPaymentVAViewController.xib */,
 				E5AE72AD2212A2C50064FE00 /* MIDDanamonOnlineViewController.xib */,
 				E5AE72C82212A2C80064FE00 /* MidGopayDetailViewController.xib */,
-				E5AE72B62212A2C60064FE00 /* MidGopayViewController.xib */,
 				E5AE72C62212A2C70064FE00 /* MIDOtherVAViewController.xib */,
 				E5AE72AF2212A2C50064FE00 /* MIDPaymentIndomaretViewController.xib */,
 				E5AE72B12212A2C50064FE00 /* MidtransCommonTSCViewController.xib */,
@@ -2526,6 +2518,22 @@
 				E597353421A29475005C9BA0 /* MidtransSDK.h */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		EC75847D221542FF0069A963 /* GOPAY */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE6EEE2212A0630064FE00 /* MIDGopayView.h */,
+				E5AE6F0E2212A0690064FE00 /* MIDGopayView.m */,
+				E5AE702D2212A0A70064FE00 /* MIDGopayDetailView.h */,
+				E5AE702B2212A0A60064FE00 /* MIDGopayDetailView.m */,
+				E5AE6EDE2212A0610064FE00 /* MidGopayViewController.h */,
+				E5AE6EE92212A0620064FE00 /* MidGopayDetailViewController.h */,
+				E5AE6F3B2212A0730064FE00 /* MidGopayDetailViewController.m */,
+				E5AE72B62212A2C60064FE00 /* MidGopayViewController.xib */,
+				E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */,
+			);
+			path = GOPAY;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

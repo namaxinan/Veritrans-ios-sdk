@@ -15,6 +15,7 @@
 #import "MidtransDirectHeader.h"
 #import "MidtransUINextStepButton.h"
 #import "VTGuideCell.h"
+#import "MIDVendorUI.h"
 #import "MidtransUIConfiguration.h"
 #define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
@@ -29,21 +30,17 @@
 }
 
 @dynamic view;
-- (instancetype)initWithToken:(MidtransTransactionTokenResponse *)token
-            paymentMethodName:(MidtransPaymentListModel *)paymentMethod
-                     merchant:(MidtransPaymentRequestV2Merchant *)merchant {
-    
-    if (self = [super initWithToken:token paymentMethodName:paymentMethod]) {
-        //self.title = paymentMethod;
-    }
-    return self;
+
+- (MIDPaymentInfo *)info {
+    return [MIDVendorUI shared].info;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSLog(@"view did appear");
+
 }
 - (void)handleGopayStatus:(id)sender {
     [[MidtransMerchantClient shared] performCheckStatusTransactionWcompletion:^(MidtransTransactionResult * _Nullable result, NSError * _Nullable error) {
@@ -59,12 +56,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleGopayStatus:)
                                                  name:NOTIFICATION_GOPAY_STATUS
                                                object:nil];
-    
+//
     self.title = @"GO-PAY";
     self.view.tableView.delegate = self;
     self.view.tableView.dataSource = self;
@@ -74,37 +70,35 @@
     [self.view.tableView registerNib:[UINib nibWithNibName:@"MidtransDirectHeader" bundle:VTBundle] forCellReuseIdentifier:@"MidtransDirectHeader"];
     [self.view.tableView registerNib:[UINib nibWithNibName:@"VTGuideCell" bundle:VTBundle] forCellReuseIdentifier:@"VTGuideCell"];
     self.headerView = [self.view.tableView dequeueReusableCellWithIdentifier:@"MidtransDirectHeader"];
-    self.view.amountLabel.text = self.token.transactionDetails.grossAmount.formattedCurrencyNumber;
-    self.view.orderIdLabel.text = self.token.transactionDetails.orderId;
-    
+    self.view.amountLabel.text = self.info.items.formattedGrossAmount;
+    self.view.orderIdLabel.text = self.info.transaction.orderID;
 
-   
-    [self.view.tableView reloadData];
-    
+    self.view.gopayTopViewHeightConstraints.constant = 0.0f;
+    self.view.topWrapperView.hidden = YES;
     if (IPAD) {
         self.view.topWrapperView.hidden = YES;
         self.view.topNoticeLabel.text = [VTClassHelper getTranslationFromAppBundleForString:@"Please complete your ‘GO-PAY‘ payment via ‘GO-JEK‘ app"];
     } else {
-        NSURL *gojekUrl = [NSURL URLWithString:MIDTRANS_GOPAY_PREFIX];
-        if ([[UIApplication sharedApplication] canOpenURL:gojekUrl]) {
-            self.view.gopayTopViewHeightConstraints.constant = 0.0f;
-            self.view.topWrapperView.hidden = YES;
-            
-        } else {
-            self.view.topWrapperView.hidden = NO;
-            self.view.transactionBottomDetailConstraints.constant = 0.0f;
-            self.view.finishPaymentHeightConstraints.constant =  0.0f;
-        }
+        self.view.gopayTopViewHeightConstraints.constant = 0.0f;
+        self.view.topWrapperView.hidden = YES;
+//        NSURL *gojekUrl = [NSURL URLWithString:MIDTRANS_GOPAY_PREFIX];
+//        if ([[UIApplication sharedApplication] canOpenURL:gojekUrl]) {
+//            self.view.gopayTopViewHeightConstraints.constant = 0.0f;
+//            self.view.topWrapperView.hidden = YES;
+//
+//        } else {
+//            self.view.topWrapperView.hidden = NO;
+//            self.view.transactionBottomDetailConstraints.constant = 0.0f;
+//            self.view.finishPaymentHeightConstraints.constant =  0.0f;
+//        }
     }
-    
-    
-[self.view.finishPaymentButton setTitle:[VTClassHelper getTranslationFromAppBundleForString:@"Pay Now with GO-PAY"] forState:UIControlStateNormal];
+
+    [self.view.finishPaymentButton setTitle:[VTClassHelper getTranslationFromAppBundleForString:@"Pay Now with GO-PAY"] forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"gopay_button" inBundle:VTBundle compatibleWithTraitCollection:nil];
-    
+    NSString *filenameByLanguage = [[MidtransDeviceHelper deviceCurrentLanguage] stringByAppendingFormat:@"_%@", MIDTRANS_PAYMENT_GOPAY];
     [self.view.finishPaymentButton setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.view.finishPaymentButton.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
     self.view.finishPaymentButton.imageView.tintColor = [UIColor whiteColor];
-    
     if (IPAD) {
         NSString *filenameByLanguage = [[MidtransDeviceHelper deviceCurrentLanguage] stringByAppendingFormat:@"_ipad_%@", MIDTRANS_PAYMENT_GOPAY];
         NSString *guidePath = [VTBundle pathForResource:filenameByLanguage ofType:@"plist"];
@@ -112,20 +106,18 @@
             guidePath = [VTBundle pathForResource:[NSString stringWithFormat:@"en_ipad_%@",MIDTRANS_PAYMENT_GOPAY] ofType:@"plist"];
         }
         self.guides = [VTClassHelper instructionsFromFilePath:guidePath];
-         [self.view.tableView reloadData];
     } else {
         NSString *filenameByLanguage = [[MidtransDeviceHelper deviceCurrentLanguage] stringByAppendingFormat:@"_%@", MIDTRANS_PAYMENT_GOPAY];
-        
         NSString *guidePath = [VTBundle pathForResource:filenameByLanguage ofType:@"plist"];
         if (guidePath == nil) {
             guidePath = [VTBundle pathForResource:[NSString stringWithFormat:@"en_%@",MIDTRANS_PAYMENT_GOPAY] ofType:@"plist"];
         }
         self.guides = [VTClassHelper instructionsFromFilePath:guidePath];
-         [self.view.tableView reloadData];
+        
     }
-   
-    
-    // Do any additional setup after loading the view from its nib.
+    [self.view.tableView reloadData];
+
+//    // Do any additional setup after loading the view from its nib.
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -210,7 +202,7 @@
     [self showLoadingWithText:[VTClassHelper getTranslationFromAppBundleForString:@"Processing your transaction"]];
     id<MidtransPaymentDetails>paymentDetails;
     paymentDetails = [[MidtransPaymentGOPAY alloc] init];
-    MidtransTransaction *transaction = [[MidtransTransaction alloc] initWithPaymentDetails:paymentDetails token:self.token];
+    MidtransTransaction *transaction = [[MidtransTransaction alloc] initWithPaymentDetails:paymentDetails token:self.info.token];
     
     [[MidtransMerchantClient shared] performTransaction:transaction
                                              completion:^(MidtransTransactionResult *result, NSError *error) {

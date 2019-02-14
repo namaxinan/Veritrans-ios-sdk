@@ -276,6 +276,9 @@
     if ([model.internalBaseClassIdentifier isEqualToString:MIDTRANS_PAYMENT_VA]) {
         VTVAListController *vc = [[VTVAListController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+    } else if([model.internalBaseClassIdentifier isEqualToString:MIDTRANS_PAYMENT_GOPAY]) {
+        MidGopayViewController *gopayVC = [[MidGopayViewController alloc] init];
+        [self.navigationController pushViewController:gopayVC animated:YES];
     }
 }
 
