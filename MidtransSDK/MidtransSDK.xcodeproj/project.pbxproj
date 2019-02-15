@@ -560,7 +560,6 @@
 		E5C07D8721DC9A5A0020C858 /* MIDCheckoutIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C07D8621DC9A5A0020C858 /* MIDCheckoutIdentifier.m */; };
 		E5C07D8A21DC9F840020C858 /* MIDTokenizeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C07D8921DC9F840020C858 /* MIDTokenizeResponse.m */; };
 		E5C34D7B21E6032E002361C8 /* MIDSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C34D7A21E6032E002361C8 /* MIDSwiftViewController.swift */; };
-		E5C7CD2E21BD56E900C22045 /* MIDEWalletTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7CD2D21BD56E900C22045 /* MIDEWalletTest.m */; };
 		E5C7CD3021BD56FA00C22045 /* MIDStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7CD2F21BD56FA00C22045 /* MIDStoreTest.m */; };
 		E5C7CD3221BD570F00C22045 /* MIDDirectDebitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7CD3121BD570F00C22045 /* MIDDirectDebitTest.m */; };
 		E5D21D5521B636570082ABF8 /* MIDGopayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D21D5421B636570082ABF8 /* MIDGopayResult.m */; };
@@ -583,6 +582,7 @@
 		E5EDAEBA221565BC00552AF3 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5AE723D2212A2870064FE00 /* SourceSansPro-Light.ttf */; };
 		E5EDAEBB221565BC00552AF3 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5AE723B2212A2870064FE00 /* SourceSansPro-Regular.ttf */; };
 		E5EDAEBC221565BC00552AF3 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5AE723A2212A2870064FE00 /* SourceSansPro-Semibold.ttf */; };
+		EC7D1A532216C74E007F495C /* MIDEWalletTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7CD2D21BD56E900C22045 /* MIDEWalletTest.m */; };
 		ECAC031521E459A100D5B561 /* MIDBankTransferBNITest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC031421E459A100D5B561 /* MIDBankTransferBNITest.m */; };
 		ECAC031721E45E9200D5B561 /* MIDBankTransferMandiriTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC031621E45E9200D5B561 /* MIDBankTransferMandiriTest.m */; };
 		ECAC031921E473E400D5B561 /* MIDBankTransferPermataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC031821E473E400D5B561 /* MIDBankTransferPermataTest.m */; };
@@ -782,7 +782,7 @@
 		E5AE6EE22212A0610064FE00 /* MidtransUIPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidtransUIPaymentController.m; sourceTree = "<group>"; };
 		E5AE6EE42212A0620064FE00 /* MidtransCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidtransCollectionViewLayout.m; sourceTree = "<group>"; };
 		E5AE6EE52212A0620064FE00 /* MidtransUIFontSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidtransUIFontSource.h; sourceTree = "<group>"; };
-		E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidGopayViewController.m; sourceTree = "<group>"; };
+		E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidGopayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E5AE6EE72212A0620064FE00 /* MidtransUIPaymentDirectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidtransUIPaymentDirectView.m; sourceTree = "<group>"; };
 		E5AE6EE82212A0620064FE00 /* AddOnConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOnConstructor.m; sourceTree = "<group>"; };
 		E5AE6EE92212A0620064FE00 /* MidGopayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidGopayDetailViewController.h; sourceTree = "<group>"; };
@@ -1669,16 +1669,12 @@
 				E5AE702C2212A0A60064FE00 /* MidtransCommonTSCViewController.m */,
 				E5AE702A2212A0A50064FE00 /* SNPPostPaymentGeneralViewController.h */,
 				E5AE702E2212A0A70064FE00 /* SNPPostPaymentGeneralViewController.m */,
-				E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */,
 				E5AE6F8C2212A0810064FE00 /* MIDOtherVAViewController.h */,
 				E5AE6F762212A07E0064FE00 /* MIDOtherVAViewController.m */,
 				E5AE6F452212A0750064FE00 /* MIDPaymentIndomaretViewController.h */,
 				E5AE6F222212A06E0064FE00 /* MIDPaymentIndomaretViewController.m */,
-				E5AE6EDE2212A0610064FE00 /* MidGopayViewController.h */,
 				E5AE6F782212A07E0064FE00 /* MBXPageViewController_vt.h */,
 				E5AE6EF32212A0630064FE00 /* MBXPageViewController_vt.m */,
-				E5AE6EE92212A0620064FE00 /* MidGopayDetailViewController.h */,
-				E5AE6F3B2212A0730064FE00 /* MidGopayDetailViewController.m */,
 				E5AE6F512212A0770064FE00 /* MidtransNewCreditCardViewController.h */,
 				E5AE6F532212A0780064FE00 /* MidtransNewCreditCardViewController.m */,
 				E5AE6F4A2212A0760064FE00 /* MidtransPaymentStatusViewController.h */,
@@ -1750,6 +1746,7 @@
 		E56FA9492212FA7C003DC10D /* New Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EC7D1A4C2216A213007F495C /* GOPAY */,
 				E5EDAEB122153B8600552AF3 /* MIDWebPaymentController.h */,
 				E5EDAEB222153B8600552AF3 /* MIDWebPaymentController.m */,
 				E56FA9442212B68A003DC10D /* MIDPaymentController.h */,
@@ -2128,8 +2125,6 @@
 			children = (
 				E5AE70372212A0AA0064FE00 /* MIDBarcode39Generator.h */,
 				E5AE70312212A0A80064FE00 /* MIDBarcode39Generator.m */,
-				E5AE702D2212A0A70064FE00 /* MIDGopayDetailView.h */,
-				E5AE702B2212A0A60064FE00 /* MIDGopayDetailView.m */,
 				E5AE70342212A0A90064FE00 /* SNPMaintainView.h */,
 				E5AE70332212A0A90064FE00 /* SNPMaintainView.m */,
 				E5AE70302212A0A80064FE00 /* SNPPostPaymentGeneralHeader.h */,
@@ -2156,8 +2151,6 @@
 				E5AE6F882212A0810064FE00 /* HMSegmentedControl.m */,
 				E5AE6EFA2212A0640064FE00 /* IHKeyboardAvoiding_vt.h */,
 				E5AE6EF22212A0630064FE00 /* IHKeyboardAvoiding_vt.m */,
-				E5AE6EEE2212A0630064FE00 /* MIDGopayView.h */,
-				E5AE6F0E2212A0690064FE00 /* MIDGopayView.m */,
 				E5AE6EDB2212A0610064FE00 /* MidtransLineView.h */,
 				E5AE6F442212A0750064FE00 /* MidtransLineView.m */,
 				E5AE6FAF2212A0880064FE00 /* MidtransLoadingIndicator.h */,
@@ -2303,8 +2296,6 @@
 			isa = PBXGroup;
 			children = (
 				E56FA9402212A5F0003DC10D /* SNPPostPaymentVAViewController.xib */,
-				E5AE72C82212A2C80064FE00 /* MidGopayDetailViewController.xib */,
-				E5AE72B62212A2C60064FE00 /* MidGopayViewController.xib */,
 				E5AE72C62212A2C70064FE00 /* MIDOtherVAViewController.xib */,
 				E5AE72AF2212A2C50064FE00 /* MIDPaymentIndomaretViewController.xib */,
 				E5AE72B12212A2C50064FE00 /* MidtransCommonTSCViewController.xib */,
@@ -2536,6 +2527,39 @@
 				E5EDAEB622154CB200552AF3 /* MIDPaymentDetail.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EC7D1A4C2216A213007F495C /* GOPAY */ = {
+			isa = PBXGroup;
+			children = (
+				EC7D1A4E2216A3AF007F495C /* detail */,
+				EC7D1A4D2216A397007F495C /* main */,
+			);
+			path = GOPAY;
+			sourceTree = "<group>";
+		};
+		EC7D1A4D2216A397007F495C /* main */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE6EDE2212A0610064FE00 /* MidGopayViewController.h */,
+				E5AE6EEE2212A0630064FE00 /* MIDGopayView.h */,
+				E5AE6F0E2212A0690064FE00 /* MIDGopayView.m */,
+				E5AE6EE62212A0620064FE00 /* MidGopayViewController.m */,
+				E5AE72B62212A2C60064FE00 /* MidGopayViewController.xib */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		EC7D1A4E2216A3AF007F495C /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				E5AE72C82212A2C80064FE00 /* MidGopayDetailViewController.xib */,
+				E5AE6EE92212A0620064FE00 /* MidGopayDetailViewController.h */,
+				E5AE6F3B2212A0730064FE00 /* MidGopayDetailViewController.m */,
+				E5AE702D2212A0A70064FE00 /* MIDGopayDetailView.h */,
+				E5AE702B2212A0A60064FE00 /* MIDGopayDetailView.m */,
+			);
+			path = detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3271,9 +3295,9 @@
 				E55CBF75219BF0C300721462 /* MIDClient.m in Sources */,
 				E5594B5921F99D81003ED198 /* MIDCardlessCreditTest.m in Sources */,
 				E5C7CD3021BD56FA00C22045 /* MIDStoreTest.m in Sources */,
+				EC7D1A532216C74E007F495C /* MIDEWalletTest.m in Sources */,
 				E55D709121E8782C00718EDF /* MIDKlikbcaTest.m in Sources */,
 				E55D708F21E8747A00718EDF /* MIDCheckoutTest.m in Sources */,
-				E5C7CD2E21BD56E900C22045 /* MIDEWalletTest.m in Sources */,
 				ECAC031921E473E400D5B561 /* MIDBankTransferPermataTest.m in Sources */,
 				ECAC031521E459A100D5B561 /* MIDBankTransferBNITest.m in Sources */,
 				E530597821EECB3900545CF4 /* MIDCreditCardTest.m in Sources */,
@@ -3431,6 +3455,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

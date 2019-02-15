@@ -276,6 +276,11 @@
         VTVAListController *vc = [[VTVAListController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if([model.paymentID isEqualToString:MIDTRANS_PAYMENT_GOPAY]) {
+        MidGopayViewController *gopayVC = [[MidGopayViewController alloc] initWithModel:model];
+        [gopayVC showDismissButton:self.singlePayment];
+        [self.navigationController pushViewController:gopayVC animated:YES];
+    }
     else {
         MIDPaymentMethod method = model.method;
         if (method == MIDPaymentMethodCIMBClicks ||

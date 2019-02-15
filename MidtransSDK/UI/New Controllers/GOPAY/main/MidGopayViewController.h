@@ -8,6 +8,7 @@
 
 #import "MidtransUIPaymentController.h"
 
+@class MidpaymentDetail;
 @interface MidGopayViewController : MidtransUIPaymentController
-
+- (instancetype)initWithModel:(MIDPaymentDetail *)model;
 @end

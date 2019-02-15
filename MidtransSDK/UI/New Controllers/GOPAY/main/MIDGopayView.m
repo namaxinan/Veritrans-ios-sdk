@@ -16,6 +16,13 @@
     [self.finishPaymentButton setTitle:[VTClassHelper getTranslationFromAppBundleForString:@"confirm.payment"] forState:UIControlStateNormal];
       self.totalAmountLabel.text = [VTClassHelper getTranslationFromAppBundleForString:@"total.amount"];
     [self.installGojekButton setTitle:[VTClassHelper getTranslationFromAppBundleForString:@"install.gojek"] forState:UIControlStateNormal];
+    
+    [self.finishPaymentButton setTitle:[VTClassHelper getTranslationFromAppBundleForString:@"Pay Now with GO-PAY"] forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"gopay_button" inBundle:VTBundle compatibleWithTraitCollection:nil];
+    [self.finishPaymentButton setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.finishPaymentButton.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+    self.finishPaymentButton.imageView.tintColor = [UIColor whiteColor];
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

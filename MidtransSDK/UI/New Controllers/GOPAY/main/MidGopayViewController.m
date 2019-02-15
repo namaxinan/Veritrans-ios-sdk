@@ -8,6 +8,7 @@
 
 #import "MidGopayViewController.h"
 #import "MIDGopayView.h"
+#import "MIDPaymentDetail.h"
 #import "MidGopayDetailViewController.h"
 #import "VTClassHelper.h"
 #import <MidtransCoreKit/MidtransCoreKit.h>
@@ -15,6 +16,7 @@
 #import "MidtransDirectHeader.h"
 #import "MidtransUINextStepButton.h"
 #import "VTGuideCell.h"
+#import "MIDVendorUI.h"
 #import "MidtransUIConfiguration.h"
 #define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
@@ -22,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet MIDGopayView *view;
 @property (nonatomic) NSArray *guides;
 @property (nonatomic) MidtransDirectHeader *headerView;
+@property (nonatomic) MIDPaymentDetail *model;
 @end
 
 @implementation MidGopayViewController {
@@ -29,6 +32,164 @@
 }
 
 @dynamic view;
+
+
+- (MIDPaymentInfo *)info {
+    return [MIDVendorUI shared].info;
+}
+
+- (instancetype)initWithModel:(MIDPaymentDetail *)model {
+    if (self = [super init]) {
+        self.model = model;
+        
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = self.model.title;
+    self.view.amountLabel.text = self.info.transaction.grossAmount.formattedCurrencyNumber;
+    self.view.orderIdLabel.text = self.info.transaction.orderID;
+    self.view.tableView.delegate = self;
+    self.view.tableView.dataSource = self;
+    self.view.tableView.tableFooterView = [UIView new];
+    self.view.tableView.estimatedRowHeight = 60;
+    self.view.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view.tableView registerNib:[UINib nibWithNibName:@"MidtransDirectHeader" bundle:VTBundle] forCellReuseIdentifier:@"MidtransDirectHeader"];
+    [self.view.tableView registerNib:[UINib nibWithNibName:@"VTGuideCell" bundle:VTBundle] forCellReuseIdentifier:@"VTGuideCell"];
+    self.headerView = [self.view.tableView dequeueReusableCellWithIdentifier:@"MidtransDirectHeader"];
+    if (IPAD) {
+        self.view.topWrapperView.hidden = YES;
+        self.view.topNoticeLabel.text = [VTClassHelper getTranslationFromAppBundleForString:@"Please complete your ‘GO-PAY‘ payment via ‘GO-JEK‘ app"];
+        NSString *filenameByLanguage = [[MidtransDeviceHelper deviceCurrentLanguage] stringByAppendingFormat:@"_ipad_%@", MIDTRANS_PAYMENT_GOPAY];
+        NSString *guidePath = [VTBundle pathForResource:filenameByLanguage ofType:@"plist"];
+        if (guidePath == nil) {
+            guidePath = [VTBundle pathForResource:[NSString stringWithFormat:@"en_ipad_%@",MIDTRANS_PAYMENT_GOPAY] ofType:@"plist"];
+        }
+        self.guides = [VTClassHelper instructionsFromFilePath:guidePath];
+        
+    } else {
+        NSURL *gojekUrl = [NSURL URLWithString:MIDTRANS_GOPAY_PREFIX];
+        if (![[UIApplication sharedApplication] canOpenURL:gojekUrl]) {
+            self.view.gopayTopViewHeightConstraints.constant = 0.0f;
+            self.view.topWrapperView.hidden = YES;
+            NSString *filenameByLanguage = [[MidtransDeviceHelper deviceCurrentLanguage] stringByAppendingFormat:@"_%@", MIDTRANS_PAYMENT_GOPAY];
+            NSString *guidePath = [VTBundle pathForResource:filenameByLanguage ofType:@"plist"];
+            if (guidePath == nil) {
+                guidePath = [VTBundle pathForResource:[NSString stringWithFormat:@"en_%@",MIDTRANS_PAYMENT_GOPAY] ofType:@"plist"];
+            }
+            self.guides = [VTClassHelper instructionsFromFilePath:guidePath];
+            
+        } else {
+            self.view.topWrapperView.hidden = NO;
+            self.view.transactionBottomDetailConstraints.constant = 0.0f;
+            self.view.finishPaymentHeightConstraints.constant =  0.0f;
+        }
+    }
+    
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    [label setFont:[UIFont boldSystemFontOfSize:12]];
+    /* Section header is in 0th index... */
+    [label setText:@"Instructions"];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor whiteColor]]; //your background color...
+    return view;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.guides.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    VTGuideCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VTGuideCell"];
+    if(indexPath.row %2 ==0) {
+        cell.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
+    }
+    if (IPAD && indexPath.row == 3) {
+        cell.imageBottomInstruction.hidden = NO;
+        [cell.imageBottomInstruction setImage:[UIImage imageNamed:@"gopay_scan_1" inBundle:VTBundle compatibleWithTraitCollection:nil]];
+        cell.bottomNotes.hidden = NO;
+        cell.bottomImageInstructionsConstraints.constant = 120.0f;
+    }
+    if (IPAD && indexPath.row == 4) {
+        cell.imageBottomInstruction.hidden = NO;
+        [cell.imageBottomInstruction setImage:[UIImage imageNamed:@"gopay_scan_2" inBundle:VTBundle compatibleWithTraitCollection:nil]];
+        cell.bottomImageInstructionsConstraints.constant = 120.0f;
+    }
+    [cell setInstruction:self.guides[indexPath.row] number:indexPath.row+1];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (IPAD && indexPath.row == 3) {
+        return 200;
+    }
+    if (IPAD && indexPath.row == 4) {
+        return 200;
+    }
+    else {
+        if (IS_IOS8_OR_ABOVE) {
+            return UITableViewAutomaticDimension;
+        }
+        else {
+            static VTGuideCell *cell = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                cell = [self.view.tableView dequeueReusableCellWithIdentifier:@"VTGuideCell"];
+            });
+            [cell setInstruction:self.guides[indexPath.row] number:indexPath.row+1];
+            return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        }
+        
+    }
+}
+- (IBAction)installGOJEKappButtonDidTapped:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:GOJEK_APP_ITUNES_LINK]];
+}
+- (void)openGojekAppWithResult:(MIDGopayResult *)result {
+    NSURL *gojekConstructURL = [NSURL URLWithString:result.deepLinkURL];
+    if ([[UIApplication sharedApplication] canOpenURL:gojekConstructURL]) {
+        [[UIApplication sharedApplication] openURL:gojekConstructURL];
+    }
+}
+- (IBAction)finishPaymentButtonDidTapped:(id)sender {
+    [self showLoadingWithText:[VTClassHelper getTranslationFromAppBundleForString:@"Processing your transaction"]];
+    [MIDEWalletCharge gopayWithToken:self.info.token completion:^(MIDGopayResult * _Nullable result, NSError * _Nullable error) {
+        [self hideLoading];
+        if (error || !result) {
+            [self showToastInviewWithMessage:error.description];
+        } else {
+            if (IPAD) {
+                MidGopayDetailViewController *gopayDetailVC = [[MidGopayDetailViewController  alloc] initWithToken:self.token paymentMethodName:self.paymentMethod];
+                [self.navigationController pushViewController:gopayDetailVC animated:YES];
+            } else {
+                NSDictionary *userInfo = @{TRANSACTION_RESULT_KEY:result};
+                [[NSNotificationCenter defaultCenter] postNotificationName:TRANSACTION_PENDING object:nil userInfo:userInfo];
+                payResult = result;
+                
+                [self openGojekAppWithResult:result];
+                
+                if (UICONFIG.hideStatusPage) {
+                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                }
+            }
+        }
+    }];
+    
+}
 //- (instancetype)initWithToken:(MidtransTransactionTokenResponse *)token
 //            paymentMethodName:(MidtransPaymentListModel *)paymentMethod
 //                     merchant:(MidtransPaymentRequestV2Merchant *)merchant {
