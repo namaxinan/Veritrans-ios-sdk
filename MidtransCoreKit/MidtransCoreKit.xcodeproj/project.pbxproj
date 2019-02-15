@@ -337,6 +337,10 @@
 		E571208F1E937A790064F515 /* MidtransPromoEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = E511CF3A1E48355600926FC7 /* MidtransPromoEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E57120901E937A790064F515 /* MidtransCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CDEC8C1E9340CA0032DC3B /* MidtransCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5CDEC8E1E9340CA0032DC3B /* MidtransCoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CDEC8C1E9340CA0032DC3B /* MidtransCoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECF970B422169637001BCF41 /* MIDtransPaymentAlfamart.h in Headers */ = {isa = PBXBuildFile; fileRef = ECF970B222169637001BCF41 /* MIDtransPaymentAlfamart.h */; };
+		ECF970B522169637001BCF41 /* MIDtransPaymentAlfamart.h in Headers */ = {isa = PBXBuildFile; fileRef = ECF970B222169637001BCF41 /* MIDtransPaymentAlfamart.h */; };
+		ECF970B622169637001BCF41 /* MIDtransPaymentAlfamart.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF970B322169637001BCF41 /* MIDtransPaymentAlfamart.m */; };
+		ECF970B722169637001BCF41 /* MIDtransPaymentAlfamart.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF970B322169637001BCF41 /* MIDtransPaymentAlfamart.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -533,6 +537,8 @@
 		E5E4363A1CE31E8D00F688ED /* Midtrans3DSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Midtrans3DSController.m; sourceTree = "<group>"; };
 		E5FBC7EF1E39E3FF006B574D /* MidtransNetworkLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidtransNetworkLogger.h; sourceTree = "<group>"; };
 		E5FBC7F01E39E3FF006B574D /* MidtransNetworkLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidtransNetworkLogger.m; sourceTree = "<group>"; };
+		ECF970B222169637001BCF41 /* MIDtransPaymentAlfamart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDtransPaymentAlfamart.h; sourceTree = "<group>"; };
+		ECF970B322169637001BCF41 /* MIDtransPaymentAlfamart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDtransPaymentAlfamart.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +820,8 @@
 				0C9324371F7B76E800D9A390 /* MidtransPaymentDanamonOnline.m */,
 				0C313E1A1FCD2C5A0074366F /* MidtransPaymentGOPAY.h */,
 				0C313E1B1FCD2C5A0074366F /* MidtransPaymentGOPAY.m */,
+				ECF970B222169637001BCF41 /* MIDtransPaymentAlfamart.h */,
+				ECF970B322169637001BCF41 /* MIDtransPaymentAlfamart.m */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -1019,6 +1027,7 @@
 				E571208A1E937A790064F515 /* MidtransPaymentIndosatDompetku.h in Headers */,
 				E571208B1E937A790064F515 /* MidtransPaymentKiosOn.h in Headers */,
 				E571208C1E937A790064F515 /* MIdtransPaymentGCI.h in Headers */,
+				ECF970B522169637001BCF41 /* MIDtransPaymentAlfamart.h in Headers */,
 				E571208D1E937A790064F515 /* MidtransMerchantClient.h in Headers */,
 				E571208E1E937A790064F515 /* MidtransClient.h in Headers */,
 				E571208F1E937A790064F515 /* MidtransPromoEngine.h in Headers */,
@@ -1114,6 +1123,7 @@
 				E55F63951E934C4800C012C8 /* MidtransPaymentIndosatDompetku.h in Headers */,
 				E55F63961E934C4800C012C8 /* MidtransPaymentKiosOn.h in Headers */,
 				E55F63971E934C4800C012C8 /* MIdtransPaymentGCI.h in Headers */,
+				ECF970B422169637001BCF41 /* MIDtransPaymentAlfamart.h in Headers */,
 				E55F63981E934C4800C012C8 /* MidtransMerchantClient.h in Headers */,
 				E55F63991E934C4800C012C8 /* MidtransClient.h in Headers */,
 				E55F639A1E934C4800C012C8 /* MidtransPromoEngine.h in Headers */,
@@ -1188,7 +1198,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MID;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Midtrans;
 				TargetAttributes = {
 					3D8584772111C52500899462 = {
@@ -1304,6 +1314,7 @@
 				E57120281E937A2C0064F515 /* MidtransAddress.m in Sources */,
 				E57120291E937A2C0064F515 /* MidtransCustomerDetails.m in Sources */,
 				0C93243A1F7B76F500D9A390 /* MidtransPaymentDanamonOnline.m in Sources */,
+				ECF970B722169637001BCF41 /* MIDtransPaymentAlfamart.m in Sources */,
 				E571202A1E937A2C0064F515 /* MidtransCreditCard.m in Sources */,
 				E571202B1E937A2C0064F515 /* MidtransMaskedCreditCard.m in Sources */,
 				E571202C1E937A2C0064F515 /* MidtransTransactionResult.m in Sources */,
@@ -1355,6 +1366,7 @@
 				E5711FFB1E9379E80064F515 /* MidtransVirtualAccountModel.m in Sources */,
 				E55F63A61E934C6400C012C8 /* MidtransNetworkLogger.m in Sources */,
 				E55F63A71E934C6400C012C8 /* MidtransDeviceHelper.m in Sources */,
+				ECF970B622169637001BCF41 /* MIDtransPaymentAlfamart.m in Sources */,
 				E55F63A81E934C6400C012C8 /* Midtrans3DSController.m in Sources */,
 				E55F63A91E934C6400C012C8 /* MidtransPaymentWebController.m in Sources */,
 				E5711FF81E9379B90064F515 /* MidtransPaymentListModel.m in Sources */,
@@ -1442,12 +1454,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1494,12 +1508,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
